@@ -1,0 +1,102 @@
+#include <iostream>
+using namespace std;
+
+class Vector
+{
+    // field members
+    int* data;
+    int size,capacity;
+
+    // methods
+public:
+    // default constructor
+    Vector(int capacity = 4)
+    {
+        this->size = 0;
+        this->capacity = capacity;
+        this->data = new int[capacity];
+    }
+
+private:
+    void copy(const Vector& v)
+    {
+        this->size = v.size;
+        this->capacity = v.capacity;
+        this->data = new int[v.capacity];
+        for(int i=0;i<v.size;i++)
+            this->data[i] = v.data[i];
+    }
+
+    void destroy()
+    {
+        delete[] data;
+    }
+
+public:
+    // copy constructor
+    Vector(const Vector& v)
+    {
+        copy(v);
+    }
+
+    // assignment operator
+    Vector& operator=(const Vector& v)
+    {
+        if(this != &v)
+        {
+            destroy();
+            copy(v);
+        }
+
+        return *this;
+    }
+
+    // destructor
+    ~Vector()
+    {
+        destroy();
+    }
+
+public:
+    void push(int elem)
+    {
+        resize();
+        arr[this->size++] = elem;
+    }
+
+private:
+    void resize()
+    {
+        if(size == capacity)
+        {
+            capacity *= 1.5;
+            int* resized_data = new int[capacity];
+            for(int i=0;i<size;i++)
+                resized_data[i] = arr[i];
+            delete[] data;
+            data = resized_data;
+        }
+    }
+    
+    /*
+    void resize()
+    {
+        if(size == capacity)
+        {
+            capacity *= 1.5;
+            int* old_data = data;
+            data = new int[capacity];
+            for(int i=0;i<size;i++)
+                data[i] = old_data[i];
+            delete[] old_data;
+        }
+    }
+    */
+};
+
+int main()
+{
+    Vector v()
+
+	return 0;
+}

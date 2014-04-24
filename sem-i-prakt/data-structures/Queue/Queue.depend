@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1397143943 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/Queue/main.cpp
+	<iostream>
+	"queue.h"
+
+1397126553 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/Queue/queue-test.cpp
+	<iostream>
+	"queue.cpp"
+
+1397128692 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/Queue/queue.cpp
+	"queue.h"
+
+1397130848 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/Queue/queue.h
+	<cstddef>
+
+1397143957 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/Queue/queue.cpp
+	<cstddef>
+	"queue.h"
+
+1397143943 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/Queue/main.cpp
+	<iostream>
+	"queue.h"
+
+1397315592 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/Queue/queue.h
+	<cstddef>
+
+1397143957 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/Queue/queue.cpp
+	<cstddef>
+	"queue.h"
+

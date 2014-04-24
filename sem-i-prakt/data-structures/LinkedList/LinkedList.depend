@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1397153813 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/LinkedList/llist.cpp
+	<cstddef>
+	"llist.h"
+
+1397152124 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/LinkedList/llist.h
+	<cstddef>
+
+1397152971 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/LinkedList/main.cpp
+	<iostream>
+	"llist.h"
+
+1397244797 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/LinkedList/llist.cpp
+	<cstddef>
+	"llist.h"
+
+1397244808 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/LinkedList/llist.h
+	<cstddef>
+

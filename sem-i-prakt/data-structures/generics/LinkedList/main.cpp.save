@@ -1,0 +1,12 @@
+#include <iostream>
+#include "llist.cpp"
+using namespace std;
+
+int main()
+{
+    LinkedList<int> l;
+    
+    for(int i=0;)
+
+	return 0;
+}

@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1398326148 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/BankAccount/main.cpp
+	<iostream>
+	"bankacc.h"
+
+1398325968 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/BankAccount/bankacc.h
+	<iostream>
+
+1398326173 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/BankAccount/bankacc.cpp
+	<iostream>
+	<cstring>
+	"bankacc.h"
+

@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1397000311 source:/home/radoslav/prog/cpp/uni/QueueFromTwoStacks/lstack.cpp
+	<cstring>
+	"lstack.h"
+
+1397000717 /home/radoslav/prog/cpp/uni/QueueFromTwoStacks/lstack.h
+	<cstring>
+
+1397001189 source:/home/radoslav/prog/cpp/uni/QueueFromTwoStacks/main.cpp
+	<iostream>
+	"tsqueue.h"
+
+1397001730 /home/radoslav/prog/cpp/uni/QueueFromTwoStacks/tsqueue.h
+	"lstack.h"
+
+1397001542 source:/home/radoslav/prog/cpp/uni/QueueFromTwoStacks/tsqueue.cpp
+	<iostream>
+	"tsqueue.h"
+
+1397317341 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/hw/QueueFromTwoStacks/lstack.cpp
+	<cstddef>
+	"lstack.h"
+
+1397316727 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/hw/QueueFromTwoStacks/lstack.h
+	<cstddef>
+
+1397318661 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/hw/QueueFromTwoStacks/main.cpp
+	<iostream>
+	"tsqueue.h"
+
+1397319292 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/hw/QueueFromTwoStacks/tsqueue.h
+	"lstack.h"
+
+1397319307 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/hw/QueueFromTwoStacks/tsqueue.cpp
+	"tsqueue.h"
+

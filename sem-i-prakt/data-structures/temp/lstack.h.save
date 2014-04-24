@@ -1,0 +1,41 @@
+
+/*
+
+ * lstack.h
+ *
+ *  Created on: 17.03.2014
+ *      Author: trifon; modified by rado
+ */
+
+#ifndef LSTACK_H_
+#define LSTACK_H_
+
+struct Node {
+	int data;
+	Node* next;
+};
+
+class LinkedStack {
+private:
+	Node* top;
+			  //  самият стек, т.е. указател към
+			  // последния включен в стека елемент
+public:
+
+	LinkedStack(); // create
+
+	// проверка дали стек е празен
+	bool empty() const;
+
+	// включване на нов елемент
+	bool push(int);
+
+	// изключване на елемент
+	bool pop();
+
+	// връщане на върха на стека
+	int peek() const;
+};
+
+
+#endif /* STACK_H_ */

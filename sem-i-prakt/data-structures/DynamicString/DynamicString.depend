@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1397313831 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/DynamicString/dstring.cpp
+	<iostream>
+	<cstring>
+	"dstring.h"
+
+1397314689 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/DynamicString/dstring.h
+	<iostream>
+
+1397314045 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/DynamicString/main.cpp
+	<iostream>
+	"dstring.h"
+

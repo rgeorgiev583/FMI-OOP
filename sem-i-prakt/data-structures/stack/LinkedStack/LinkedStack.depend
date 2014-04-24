@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1397127720 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/stack/LinkedStack/lstack.cpp
+	<cstring>
+	"lstack.h"
+
+1397130273 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/stack/LinkedStack/lstack.h
+	<cstring>
+
+1397127723 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/stack/LinkedStack/main.cpp
+	<iostream>
+	"lstack.h"
+

@@ -1,0 +1,15 @@
+#include <iostream>
+#include "vector.h"
+#include "vector3d.h"
+using namespace std;
+
+int main()
+{
+    Vector v(1,2);
+    Vector3D v3d(3,4,5);
+    v.print();
+    cout << "x = " << v.getX() << endl;
+    cout << v.getY() << endl;
+    v3d.print();
+    return 0;
+}

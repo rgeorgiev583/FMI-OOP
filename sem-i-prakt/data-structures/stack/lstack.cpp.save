@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+bool LinkedStack::empty() const()
+{
+    return top == NULL;
+}
+
+int main()
+{
+	
+
+	return 0;
+}

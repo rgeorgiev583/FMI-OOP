@@ -1,0 +1,27 @@
+    const T& front() const;
+    const T& back() const;
+    const T& at(size_t) const;
+    const T& operator[](size_t) const;
+
+
+template<typename T> const T& LinkedList<T>::front() const
+{
+    return frontnode->data;
+}
+
+template<typename T> const T& LinkedList<T>::back() const
+{
+    return backnode->data;
+}
+
+template<typename T> const T& LinkedList<T>::at(size_t pos) const
+{
+    T* atdata = base_at(pos);
+    return atdata ? *atdata : back();
+}
+
+template<typename T> const T& LinkedList<T>::operator[](size_t pos) const
+{
+    return at(pos);
+}
+

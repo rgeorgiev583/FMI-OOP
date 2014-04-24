@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1395380461 source:/media/radoslav/38D2CA09D2C9CB78/Users/Radoslav/Documents/university/2/oop/sem-i-prakt/vector/geom/GeometricVector/main.cpp
+	<iostream>
+
+1397023207 source:/media/radoslav/38D2CA09D2C9CB78/Users/Radoslav/Documents/university/2/oop/sem-i-prakt/vector/geom/GeometricVector/vector.cpp
+	<cmath>
+	"vector.h"
+
+1397023048 /media/radoslav/38D2CA09D2C9CB78/Users/Radoslav/Documents/university/2/oop/sem-i-prakt/vector/geom/GeometricVector/vector.h
+
+1397023188 source:/media/radoslav/38D2CA09D2C9CB78/Users/Radoslav/Documents/university/2/oop/sem-i-prakt/vector/geom/GeometricVector/vector3d.cpp
+	<iostream>
+	<cmath>
+	"vector.h"
+	"vector3d.h"
+
+1397023085 /media/radoslav/38D2CA09D2C9CB78/Users/Radoslav/Documents/university/2/oop/sem-i-prakt/vector/geom/GeometricVector/vector3d.h
+	"vector.h"
+
+1397023207 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/vector/geom/GeometricVector/vector.cpp
+	<cmath>
+	"vector.h"
+
+1397023048 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/vector/geom/GeometricVector/vector.h
+
+1397023188 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/vector/geom/GeometricVector/vector3d.cpp
+	<iostream>
+	<cmath>
+	"vector.h"
+	"vector3d.h"
+
+1397023085 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/vector/geom/GeometricVector/vector3d.h
+	"vector.h"
+
+1397384657 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/vector/geom/GeometricVector/main.cpp
+	<iostream>
+	"vector.h"
+	"vector3d.h"
+
+1397384940 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/vector/geom/GeometricVector/vector.h
+
+1397385393 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/vector/geom/GeometricVector/vector3d.h
+	"vector.h"
+
+1397384437 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/vector/geom/GeometricVector/vector.cpp
+	<cmath>
+	"vector.h"
+
+1397385196 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/vector/geom/GeometricVector/vector3d.cpp
+	<iostream>
+	<cmath>
+	"vector3d.h"
+
