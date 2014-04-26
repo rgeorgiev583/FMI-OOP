@@ -1,0 +1,11 @@
+#pragma once
+
+class Encoding
+{
+    char c;
+    int n;
+
+public:
+    Encoding(char);
+    int getCode() const;
+}

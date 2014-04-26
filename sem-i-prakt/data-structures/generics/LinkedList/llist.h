@@ -1,7 +1,8 @@
 #include <cstddef>
 #pragma once
 
-template<typename T> struct Node
+template<typename T>
+struct Node
 {
     T data;
     Node* next;
@@ -9,19 +10,23 @@ template<typename T> struct Node
     Node(const T&, Node* = NULL);
 };
 
-template<typename T> class LinkedList
+template<typename T>
+class LinkedList
 {
     Node<T> *frontnode, *backnode;
 
     void copy(const LinkedList<T>&);
+    void copy(const T*, size_t);
     void destroy();
     T* base_at(size_t);
     Node<T>* base_splice(const LinkedList<T>&, Node<T>*&);
+    Node<T>* base_splice(const T*, size_t, Node<T>*&);
     void base_reverse(Node<T>*);
 
 public:
     LinkedList();
     LinkedList(const LinkedList<T>&);
+    LinkedList(const T*, size_t);
     LinkedList& operator=(const LinkedList<T>&);
     ~LinkedList();
 

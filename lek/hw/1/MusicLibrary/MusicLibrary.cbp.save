@@ -33,8 +33,6 @@
 		</Compiler>
 		<Unit filename="album.cpp" />
 		<Unit filename="album.h" />
-		<Unit filename="llist.cpp" />
-		<Unit filename="llist.h" />
 		<Unit filename="song.cpp" />
 		<Unit filename="song.h" />
 		<Extensions>

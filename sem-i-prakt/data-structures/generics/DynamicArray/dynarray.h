@@ -1,34 +1,34 @@
+#include <cstddef>
 #pragma once
 
 template<typename T>
 class DynamicArray
 {
-    size_t size, capacity;
     T* data;
+    size_t length, capacity;
 
-    void reallocate();
     void reallocate(size_t);
-    void copy(const DynamicArray&);
+    void reallocate();
+    void shrink();
+    void copy(const DynamicArray<T>&);
     void copy(const T*, size_t);
     void destroy();
 
 public:
     DynamicArray();
-    DynamicArray(const DynamicArray&);
+    DynamicArray(size_t);
+    DynamicArray(const DynamicArray<T>&);
     DynamicArray(const T*, size_t);
-	DynamicArray& operator=(const DynamicArray&);
-    DynamicArray& operator=(const T*, size_t);
+	DynamicArray<T>& operator=(const DynamicArray<T>&);
 	~DynamicArray();
 
 	bool empty() const;
     size_t size() const;
 
+    T& front();
+    T& back();
     T& at(size_t);
     T& operator[](size_t);
-
-    DynamicArray& operator+=(const DynamicArray&);
-
-    friend DynamicArray operator+(const DynamicArray&, const DynamicArray&);
-    friend bool operator==(const DynamicArray&, const DynamicArray&);
-    friend bool operator<(const DynamicArray&, const DynamicArray&);
+    void push_back(const T&);
+    bool pop_back();
 };

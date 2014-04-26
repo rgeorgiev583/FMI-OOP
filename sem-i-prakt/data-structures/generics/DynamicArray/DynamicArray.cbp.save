@@ -31,8 +31,11 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../../../../lek/pkr/Cipher/encoding.cpp" />
+		<Unit filename="dossier.h" />
 		<Unit filename="dynarray.cpp" />
 		<Unit filename="dynarray.h" />
+		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

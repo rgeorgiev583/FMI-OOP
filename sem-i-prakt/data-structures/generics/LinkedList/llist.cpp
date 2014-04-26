@@ -2,19 +2,29 @@
 #include "llist.h"
 #pragma once
 
-template<typename T> Node<T>::Node(const T& _data, Node<T>* _next = NULL): data(_data), next(_next) {}
+template<typename T>
+Node<T>::Node(const T& _data, Node<T>* _next = NULL): data(_data), next(_next) {}
 
-template<typename T> void LinkedList<T>::copy(const LinkedList<T>& list)
+template<typename T>
+void LinkedList<T>::copy(const LinkedList<T>& other)
 {
-    backnode = base_splice(list, frontnode);
+    backnode = base_splice(other, frontnode);
 }
 
-template<typename T> void LinkedList<T>::destroy()
+template<typename T>
+void LinkedList<T>::copy(const T* arr, size_t arrlen)
+{
+    backnode = base_splice(arr, arrlen, frontnode);
+}
+
+template<typename T>
+void LinkedList<T>::destroy()
 {
     while(pop_front());
 }
 
-template<typename T> T* LinkedList<T>::base_at(size_t pos)
+template<typename T>
+T* LinkedList<T>::base_at(size_t pos)
 {
     size_t i = 0;
     Node<T>* node;
@@ -25,15 +35,16 @@ template<typename T> T* LinkedList<T>::base_at(size_t pos)
     return &node->data;
 }
 
-template<typename T> Node<T>* LinkedList<T>::base_splice(const LinkedList<T>& list, Node<T>*& atnode)
+template<typename T>
+Node<T>* LinkedList<T>::base_splice(const LinkedList<T>& other, Node<T>*& atnode)
 {
-    if (list.empty())
+    if (other.empty())
         return atnode;
     else
     {
-        Node<T>* lastnode = atnode = new Node<T>(list.frontnode->data);
+        Node<T>* lastnode = atnode = new Node<T>(other.frontnode->data);
 
-        for (Node<T>* i = list.frontnode->next; i; i = i->next)
+        for (Node<T>* i = other.frontnode->next; i; i = i->next)
         {
             Node<T>* node = new Node<T>(i->data);
             lastnode->next = node;
@@ -44,7 +55,28 @@ template<typename T> Node<T>* LinkedList<T>::base_splice(const LinkedList<T>& li
     }
 }
 
-template<typename T> void LinkedList<T>::base_reverse(Node<T>* node)
+template<typename T>
+Node<T>* LinkedList<T>::base_splice(const T* arr, size_t arrlen, Node<T>*& atnode)
+{
+    if (!arrlen)
+        return atnode;
+    else
+    {
+        Node<T>* lastnode = atnode = new Node<T>(arr[0]);
+
+        for (size_t i = 1; i < arrlen; i++)
+        {
+            Node<T>* node = new Node<T>(arr[i]);
+            lastnode->next = node;
+            lastnode = node;
+        }
+
+        return lastnode;
+    }
+}
+
+template<typename T>
+void LinkedList<T>::base_reverse(Node<T>* node)
 {
     if (node->next->next)
         base_reverse(node->next);
@@ -53,35 +85,47 @@ template<typename T> void LinkedList<T>::base_reverse(Node<T>* node)
     node->next = NULL;
 }
 
-template<typename T> LinkedList<T>::LinkedList(): frontnode(NULL), backnode(NULL) {}
+template<typename T>
+LinkedList<T>::LinkedList(): frontnode(NULL), backnode(NULL) {}
 
-template<typename T> LinkedList<T>::LinkedList(const LinkedList<T>& list)
+template<typename T>
+LinkedList<T>::LinkedList(const LinkedList<T>& other)
 {
-    copy(list);
+    copy(other);
 }
 
-template<typename T> LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& list)
+template<typename T>
+LinkedList<T>::LinkedList(const T* arr, size_t arrlen)
 {
-    if (this != &list)
+    copy(arr, arrlen);
+}
+
+template<typename T>
+LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& other)
+{
+    if (this != &other)
     {
         destroy();
-        copy(list);
+        copy(other);
     }
 
     return *this;
 }
 
-template<typename T> LinkedList<T>::~LinkedList<T>()
+template<typename T>
+LinkedList<T>::~LinkedList<T>()
 {
     destroy();
 }
 
-template<typename T> bool LinkedList<T>::empty() const
+template<typename T>
+bool LinkedList<T>::empty() const
 {
     return !frontnode;
 }
 
-template<typename T> size_t LinkedList<T>::size() const
+template<typename T>
+size_t LinkedList<T>::size() const
 {
     size_t len = 0;
 
@@ -91,34 +135,40 @@ template<typename T> size_t LinkedList<T>::size() const
     return len;
 }
 
-template<typename T> T& LinkedList<T>::front()
+template<typename T>
+T& LinkedList<T>::front()
 {
     return frontnode->data;
 }
 
-template<typename T> T& LinkedList<T>::back()
+template<typename T>
+T& LinkedList<T>::back()
 {
     return backnode->data;
 }
 
-template<typename T> T& LinkedList<T>::at(size_t pos)
+template<typename T>
+T& LinkedList<T>::at(size_t pos)
 {
     T* atdata = base_at(pos);
     return atdata ? *atdata : back();
 }
 
-template<typename T> T& LinkedList<T>::operator[](size_t pos)
+template<typename T>
+T& LinkedList<T>::operator[](size_t pos)
 {
     return at(pos);
 }
 
-template<typename T> void LinkedList<T>::push_front(const T& data)
+template<typename T>
+void LinkedList<T>::push_front(const T& data)
 {
     Node<T>* node = new Node<T>(data, frontnode);
     frontnode = empty() ? backnode = node : node;
 }
 
-template<typename T> void LinkedList<T>::push_back(const T& data)
+template<typename T>
+void LinkedList<T>::push_back(const T& data)
 {
     Node<T>* node = new Node<T>(data);
 
@@ -131,7 +181,8 @@ template<typename T> void LinkedList<T>::push_back(const T& data)
     }
 }
 
-template<typename T> void LinkedList<T>::push_at(const T& data, size_t pos)
+template<typename T>
+void LinkedList<T>::push_at(const T& data, size_t pos)
 {
     size_t i = 0;
     Node<T>* node;
@@ -143,7 +194,8 @@ template<typename T> void LinkedList<T>::push_at(const T& data, size_t pos)
     node->next = newnode;
 }
 
-template<typename T> bool LinkedList<T>::pop_front()
+template<typename T>
+bool LinkedList<T>::pop_front()
 {
     if (empty())
         return false;
@@ -156,7 +208,8 @@ template<typename T> bool LinkedList<T>::pop_front()
     }
 }
 
-template<typename T> bool LinkedList<T>::pop_back()
+template<typename T>
+bool LinkedList<T>::pop_back()
 {
     if (empty())
         return false;
@@ -172,7 +225,8 @@ template<typename T> bool LinkedList<T>::pop_back()
     }
 }
 
-template<typename T> bool LinkedList<T>::pop_at(size_t pos)
+template<typename T>
+bool LinkedList<T>::pop_at(size_t pos)
 {
     if (empty())
         return false;
@@ -191,7 +245,8 @@ template<typename T> bool LinkedList<T>::pop_at(size_t pos)
     }
 }
 
-template<typename T> void LinkedList<T>::splice(const LinkedList<T>& list, size_t pos)
+template<typename T>
+void LinkedList<T>::splice(const LinkedList<T>& list, size_t pos)
 {
     size_t i = 0;
     Node<T>* node;
@@ -202,7 +257,8 @@ template<typename T> void LinkedList<T>::splice(const LinkedList<T>& list, size_
     backnode = base_splice(list, node);
 }
 
-template<typename T> void LinkedList<T>::reverse()
+template<typename T>
+void LinkedList<T>::reverse()
 {
     if (frontnode && frontnode->next)
         base_reverse(frontnode);

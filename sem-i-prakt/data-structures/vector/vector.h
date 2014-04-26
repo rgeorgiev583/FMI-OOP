@@ -5,7 +5,7 @@ class Vector
     int* data;
     int size, capacity;
 public:
-    Vector(int);
+    Vector(int = 4);
 private:
     void copy(const Vector&);
     void destroy();

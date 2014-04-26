@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1398473837 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/generics/DynamicArray/dynarray.cpp
+	"dynarray.h"
+
+1398473244 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/generics/DynamicArray/dynarray.h
+	<cstddef>
+
+1398473957 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/generics/DynamicArray/main.cpp
+	<iostream>
+	"dynarray.cpp"
+
+1398473837 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/generics/DynamicArray/dynarray.cpp
+	"dynarray.h"
+

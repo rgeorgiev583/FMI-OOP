@@ -98,14 +98,3 @@ int Vector::popBack()
     size--;
     return elem;
 }
-
-int main()
-{
-    Vector v;
-    v.pushBack(1);
-    v.pushBack(2);
-    v.pushBack(3);
-    cout<<v.popBack();
-
-	return 0;
-}

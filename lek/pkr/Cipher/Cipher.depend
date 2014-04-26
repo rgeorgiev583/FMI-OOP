@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1398414197 source:/home/radoslav/prog/cpp/uni/oop/lek/pkr/Cipher/dossier.cpp
+	<iostream>
+	"dossier.h"
+
+1398413427 /home/radoslav/prog/cpp/uni/oop/lek/pkr/Cipher/dossier.h
+	"encoding.h"
+
+1398413306 /home/radoslav/prog/cpp/uni/oop/lek/pkr/Cipher/encoding.h
+
+1398413593 source:/home/radoslav/prog/cpp/uni/oop/lek/pkr/Cipher/encoding.cpp
+	"encoding.h"
+
+1398414150 source:/home/radoslav/prog/cpp/uni/oop/lek/pkr/Cipher/main.cpp
+	<iostream>
+	"dossier.h"
+

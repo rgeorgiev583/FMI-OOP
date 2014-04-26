@@ -1,17 +1,17 @@
-#include "llist.h"
+#include "dynarray.cpp"
 #include "song.h"
 #pragma once
 
 class Album
 {
     char title[100];
-    LinkedList<Song> songlist;
+    DynamicArray<Song> songlist;
 
     void setTitle(const char*);
 public:
     // конструктори:
     Album(char*);
-    Album(char*, const LinkedList<Song>&);
+    Album(char*, const DynamicArray<Song>&);
 
     // селектори:
     size_t getLength() const;

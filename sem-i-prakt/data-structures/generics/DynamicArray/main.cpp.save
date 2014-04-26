@@ -1,0 +1,29 @@
+#include <iostream>
+#include "dynarray.cpp"
+using namespace std;
+
+int main()
+{
+    int a[5] = {1, 2, 3, 4, 5};
+	DynamicArray<int> da(a, 5);
+	DynamicArray<int> da1(da);
+	DynamicArray<int> da2 = da1;
+	DynamicArray<int> da3;
+	da3 = da2;
+	DynamicArray<int> da4 = DynamicArray(10);
+	da4 = DynamicArray(da3);
+
+	for(size_t i = 0; i < 5; i++)
+        cout << da[i] << endl;
+
+    cout << endl;
+    cout << da.front() << endl;
+    cout << da.back() << endl;
+    da.push_back(12);
+    cout << da.back() << endl;dl
+    cout << da.pop_back() << en
+    cout << da.size() << endl;
+    cout << da.empty() << endl;
+
+	return 0;
+}

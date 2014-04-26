@@ -1,0 +1,18 @@
+#include <iostream>
+#include "dossier.h"
+using namespace std;
+
+int main()
+{
+    Encoding a[2] = {Encoding('a', 5), Encoding('b', 10)};
+    int b[5] = {5, 10, 10, 5, 10};
+	Dossier d1(b, 5, a, 2);
+    d.printText();
+    
+    Encoding c[2] = {Encoding('c', 2), Encoding('d', 3)};
+    int d[5] = {2, 3, 2, 3, 2};
+	Dossier d(b, 5, a, 2);
+    d.printText();
+    
+	return 0;
+}

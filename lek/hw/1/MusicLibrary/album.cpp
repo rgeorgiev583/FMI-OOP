@@ -23,7 +23,7 @@ Album::Album(char* _title)
     setTitle(_title);
 }
 
-Album::Album(char* _title, const LinkedList<Song>& _songlist): songlist(_songlist)
+Album::Album(char* _title, const DynamicArray<Song>& _songlist): songlist(_songlist)
 {
     setTitle(_title);
 }

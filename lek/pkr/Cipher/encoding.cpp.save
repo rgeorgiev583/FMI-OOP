@@ -1,0 +1,8 @@
+#include "encoding.h"
+
+Encoding::Encoding(char _ch, int _code): ch(_ch), code(_code);
+
+int Encoding::getCode() const
+{
+    return code;
+}

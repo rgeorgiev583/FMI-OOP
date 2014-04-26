@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1398377118 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/vector/main.cpp
+	<iostream>
+	"vector.h"
+
+1398384062 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/vector/vector.h
+
+1398377160 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/vector/vector.cpp
+	<iostream>
+	"vector.h"
+
