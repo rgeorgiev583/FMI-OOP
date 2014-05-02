@@ -18,14 +18,46 @@ void Album::setTitle(const char* _title)
     }
 }
 
+void copy(const Album& other)
+{
+    findbuf_title = new char[strlen(other.findbuf_title) + 1];
+    strcpy(findbuf_title, other.findbuf_title);
+}
+
+void destroy()
+{
+    delete[] findbuf_title;
+}
+
 Album::Album(char* _title)
 {
     setTitle(_title);
 }
 
-Album::Album(char* _title, const DynamicArray<Song>& _songlist): songlist(_songlist)
+Album::Album(char* _title, const LinkedList<Song>& _songlist): songlist(_songlist)
 {
     setTitle(_title);
+}
+
+Album::Album(const Album& other)
+{
+    copy(other);
+}
+
+Album& Album::operator=(const Album& other)
+{
+    if (this != &other)
+    {
+        destroy();
+        copy(other);
+    }
+
+    return *this;
+}
+
+Album::~Album()
+{
+    destroy();
 }
 
 size_t Album::getLength() const
@@ -56,9 +88,26 @@ const char* Album::getArtist() const
 
 const Song* Album::findSong(const char* title) const
 {
-    size_t songcount = songlist.size(), i = 0;
+    findbuf_title = new char[strlen(title) + 1];
+    strcpy(findbuf_title, title);
 
-    while (i < songcount && strcmp(songlist[i].getTitle(), title))
+    size_t songcount = songlist.size(), i = 0;
+    Song* findbuf_lastfound = songlist
+
+    while (i < songcount && strcmp(songlist[i].getTitle(), findbuf_title))
+        i++;
+
+    return i < songcount ? &songlist[i] : NULL;
+}
+
+const Song* Album::findNextSong() const
+{
+    findbuf_title = new char[strlen(title) + 1];
+    strcpy(findbuf_title, title);
+
+    size_t songcount = songlist.size(), i = findbuf_lastfoundpos;
+
+    while (i < songcount && strcmp(songlist[i].getTitle(), findbuf_title))
         i++;
 
     return i < songcount ? &songlist[i] : NULL;
@@ -85,7 +134,7 @@ void Album::detectAndRedirectCovers(const Album& other)
     for (size_t i = 0; i < songcount - 1; i++)
     {
         Song* found = other.findSong(songlist[i].getTitle());
-        iscover = found && found.getArtist() != songlist[i].getArtist() && found.getYear() < songlist[i].getYear();
+        iscover = found && found->getArtist() != songlist[i].getArtist() && found->getYear() < songlist[i].getYear();
     }
 
     if (iscover)
@@ -93,7 +142,7 @@ void Album::detectAndRedirectCovers(const Album& other)
         {
             Song* found = other.findSong(songlist[i].getTitle());
 
-            if (found && found.getArtist() != songlist[i].getArtist() && found.getYear() < songlist[i].getYear())
+            if (found && found->getArtist() != songlist[i].getArtist() && found->getYear() < songlist[i].getYear())
                 songlist[i].setOriginal(found);
         }
 }

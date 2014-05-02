@@ -9,8 +9,8 @@ int main()
     for (size_t i = 0; i < 10; i++)
         l.push_back(i);
 
-    for (size_t i = 0; i < 10; i++)
-        cout << l[i] << endl;
+    for (LinkedListIterator<int> i = l.begin(); i != l.end(); i++)
+        cout << *i << endl;
 
 	return 0;
 }
