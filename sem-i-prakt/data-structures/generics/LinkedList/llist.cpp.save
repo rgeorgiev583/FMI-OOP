@@ -27,6 +27,12 @@ LinkedListIterator<T>::operator Node<T>*()
 }
 
 template <typename T>
+LinkedListIterator<T>::operator T*()
+{
+    return &node->data;
+}
+
+template <typename T>
 T& LinkedListIterator<T>::operator*()
 {
     return node->data;
@@ -264,7 +270,7 @@ void LinkedList<T>::push_back(const T& data)
 }
 
 template <typename T>
-void LinkedList<T>::push_at(const T& data, size_t pos)
+void LinkedList<T>::push_at(size_t pos, const T& data)
 {
     size_t i = 0;
     Node<T>* node;

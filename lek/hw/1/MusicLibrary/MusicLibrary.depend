@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1398318335 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/1/MusicLibrary/song.cpp
+	<iostream>
+	<cstring>
+	"song.h"
+
+1398318328 /home/radoslav/prog/cpp/uni/oop/lek/hw/1/MusicLibrary/song.h
+

@@ -2,6 +2,24 @@
 #include <cstring>
 #include "album.h"
 
+FindBuffer::FindBuffer(): title(NULL) {}
+
+FindBuffer::FindBuffer(const FindBuffer&): title(NULL) {}
+
+FindBuffer& FindBuffer::operator=(const FindBuffer&)
+{
+    delete[] title;
+    title = NULL;
+    lastfound = LinkedListIterator<Song>();
+
+    return *this;
+}
+
+FindBuffer::~FindBuffer()
+{
+    delete[] title;
+}
+
 void Album::setTitle(const char* _title)
 {
     if (!_title || !strlen(_title))
@@ -18,17 +36,6 @@ void Album::setTitle(const char* _title)
     }
 }
 
-void copy(const Album& other)
-{
-    findbuf_title = new char[strlen(other.findbuf_title) + 1];
-    strcpy(findbuf_title, other.findbuf_title);
-}
-
-void destroy()
-{
-    delete[] findbuf_title;
-}
-
 Album::Album(char* _title)
 {
     setTitle(_title);
@@ -37,27 +44,6 @@ Album::Album(char* _title)
 Album::Album(char* _title, const LinkedList<Song>& _songlist): songlist(_songlist)
 {
     setTitle(_title);
-}
-
-Album::Album(const Album& other)
-{
-    copy(other);
-}
-
-Album& Album::operator=(const Album& other)
-{
-    if (this != &other)
-    {
-        destroy();
-        copy(other);
-    }
-
-    return *this;
-}
-
-Album::~Album()
-{
-    destroy();
 }
 
 size_t Album::getLength() const
@@ -88,29 +74,20 @@ const char* Album::getArtist() const
 
 const Song* Album::findSong(const char* title) const
 {
-    findbuf_title = new char[strlen(title) + 1];
-    strcpy(findbuf_title, title);
-
-    size_t songcount = songlist.size(), i = 0;
-    Song* findbuf_lastfound = songlist
-
-    while (i < songcount && strcmp(songlist[i].getTitle(), findbuf_title))
-        i++;
-
-    return i < songcount ? &songlist[i] : NULL;
+    findbuf.title = new char[strlen(title) + 1];
+    strcpy(findbuf.title, title);
+    findbuf.lastfound = NULL;
+    return findNextSong();
 }
 
 const Song* Album::findNextSong() const
 {
-    findbuf_title = new char[strlen(title) + 1];
-    strcpy(findbuf_title, title);
+    LinkedListIterator<Song> i = findbuf.lastfound ? findbuf.lastfound : songlist.begin();
 
-    size_t songcount = songlist.size(), i = findbuf_lastfoundpos;
-
-    while (i < songcount && strcmp(songlist[i].getTitle(), findbuf_title))
+    while (i != songlist.end() && strcmp(i->getTitle(), findbuf.title))
         i++;
 
-    return i < songcount ? &songlist[i] : NULL;
+    return i;
 }
 
 void Album::deleteDuplicates()

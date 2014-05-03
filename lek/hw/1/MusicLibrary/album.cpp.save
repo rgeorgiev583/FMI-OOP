@@ -18,17 +18,6 @@ void Album::setTitle(const char* _title)
     }
 }
 
-void copy(const Album& other)
-{
-    findbuf_title = new char[strlen(other.findbuf_title) + 1];
-    strcpy(findbuf_title, other.findbuf_title);
-}
-
-void destroy()
-{
-    delete[] findbuf_title;
-}
-
 Album::Album(char* _title)
 {
     setTitle(_title);
@@ -37,27 +26,6 @@ Album::Album(char* _title)
 Album::Album(char* _title, const LinkedList<Song>& _songlist): songlist(_songlist)
 {
     setTitle(_title);
-}
-
-Album::Album(const Album& other)
-{
-    copy(other);
-}
-
-Album& Album::operator=(const Album& other)
-{
-    if (this != &other)
-    {
-        destroy();
-        copy(other);
-    }
-
-    return *this;
-}
-
-Album::~Album()
-{
-    destroy();
 }
 
 size_t Album::getLength() const
@@ -88,45 +56,23 @@ const char* Album::getArtist() const
 
 const Song* Album::findSong(const char* title) const
 {
-    findbuf_title = new char[strlen(title) + 1];
-    strcpy(findbuf_title, title);
+    LinkedListIterator<Song> i = songlist.begin();
 
-    size_t songcount = songlist.size(), i = 0;
-    Song* i = 
-    Song* findbuf_lastfound = songlist;
-
-    for ()
-    
-    while (i < songcount && strcmp(songlist[i].getTitle(), findbuf_title))
+    while (i != songlist.end() && strcmp(i->getTitle(), title))
         i++;
 
-    return i < songcount ? &songlist[i] : NULL;
-}
-
-const Song* Album::findNextSong() const
-{
-    findbuf_title = new char[strlen(title) + 1];
-    strcpy(findbuf_title, title);
-
-    size_t songcount = songlist.size(), i = findbuf_lastfoundpos;
-
-    for (LinkedListIterator<Song> i = songlist.begin(); i != songlist.end() && strcmp(i->getTitle(), findbuf_title); i++)
-    
-    while (i < songcount && strcmp(songlist[i].getTitle(), findbuf_title))
-        i++;
-
-    return i < songcount ? &songlist[i] : NULL;
+    return i;
 }
 
 void Album::deleteDuplicates()
 {
-    size_t songcount = songlist.size();
-
-    for (size_t i = 0; i < songcount - 1; i++)
-        for (size_t j = i + 1; j < songcount; j++)
-            if (songlist[i] == songlist[j])
+    for (LinkedListIterator<Song> i = songlist.begin(); i + 1 != songlist.end(); i++)
+        for (LinkedListIterator<Song> j = i + 1; j != songlist.end(); j++)
+            if (*i == *j)
             {
+                delete j;
                 songlist.pop_at(j);
+                j--;
                 songcount--;
             }
 }

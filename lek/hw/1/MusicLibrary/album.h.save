@@ -6,24 +6,19 @@ class Album
 {
     char title[100];
     LinkedList<Song> songlist;
-    char* findbuf_title;
-    Song* findbuf_lastfound;
 
     void setTitle(const char*);
 public:
     // конструктори:
     Album(char*);
     Album(char*, const LinkedList<Song>&);
-    Album(const Alb)
 
     // селектори:
     size_t getLength() const;
     const char* getArtist() const;
     const Song* findSong(const char*) const;
-    const Song* findNextSong() const;
 
     // мутатори:
-    void
     void deleteDuplicates();
 
     // операции:

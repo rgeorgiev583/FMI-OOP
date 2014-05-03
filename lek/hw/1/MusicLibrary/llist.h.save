@@ -19,10 +19,10 @@ class LinkedListIterator
 
 public:
     LinkedListIterator(const Node<T>* = NULL);
-
+    
     operator Node<T>*();
-    
-    
+    operator T*();
+
     T& operator*();
     T& operator[](size_t);
 

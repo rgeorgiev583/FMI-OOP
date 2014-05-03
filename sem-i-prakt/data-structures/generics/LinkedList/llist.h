@@ -67,10 +67,15 @@ public:
     T& operator[](size_t);
     void push_front(const T&);
     void push_back(const T&);
-    void push_at(const T&, size_t);
+    void push_at(size_t, const T&);
     bool pop_front();
     bool pop_back();
     bool pop_at(size_t);
+    LinkedListIterator<T> insert(LinkedListIterator<T>, const T&);
+    void insert(LinkedListIterator<T>, size_t, const T&);
+    void insert(LinkedListIterator<T>, LinkedListIterator<T>, LinkedListIterator<T>);
+    LinkedListIterator<T> erase(LinkedListIterator<T>);
+    LinkedListIterator<T> erase(LinkedListIterator<T>, LinkedListIterator<T>);
 
     void splice(const LinkedList<T>&, size_t);
     void reverse();
