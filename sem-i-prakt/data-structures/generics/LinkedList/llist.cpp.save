@@ -126,41 +126,24 @@ T* LinkedList<T>::base_at(size_t pos)
 }
 
 template <typename T>
-void LinkedList<T>::pop_before(const LinkedListIterator<T>& atpos)
+void LinkedList<T>::pop_head(const LinkedListIterator<T>& atpos)
 {
     while (frontnode != atpos && pop_front());
 }
 
 template <typename T>
-void LinkedList<T>::pop_after(const LinkedListIterator<T>& atpos)
+void LinkedList<T>::pop_tail(const LinkedListIterator<T>& atpos)
 {
     while (backnode != atpos && pop_back());
 }
 
 template <typename T>
-LinkedListIterator<T> LinkedList<T>::base_splice(const LinkedList<T>& other, LinkedListIterator<T>& atpos)
+void LinkedList<T>::copy_at(const LinkedList<T>& other, LinkedListIterator<T>& atpos)
 {
+    for (LinkedListIterator<T> i = other.begin(); i != other.end(); i++)
+        push_back(*i);
     if (other.empty())
         return atnode;
-    else
-    {
-        pop_after(atpos);
-        pop_at(atpos);
-        
-        for (LinkedListIterator<T> i = other.begin(); i != other.end(); i++)
-            push_back(*i);
-
-        Node<T>* lastnode = atnode = new Node<T>(other.frontnode->data);
-
-        for (Node<T>* i = other.frontnode->next; i; i = i->next)
-        {
-            Node<T>* node = new Node<T>(i->data);
-            lastnode->next = node;
-            lastnode = node;
-        }
-
-        return lastnode;
-    }
 }
 
 template <typename T>

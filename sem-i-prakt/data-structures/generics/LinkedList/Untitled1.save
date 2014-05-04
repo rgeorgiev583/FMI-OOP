@@ -1,0 +1,25 @@
+
+template <typename T>
+class LinkedListIterator
+{
+    Node<T>* node;
+
+    Node<T>* node_at(size_t);
+
+public:
+    LinkedListIterator(const Node<T>* = NULL);
+
+    operator Node<T>*();
+    operator T*();
+
+    T& operator*();
+    T& operator[](size_t);
+
+    bool operator==(const LinkedListIterator<T>&) const;
+    bool operator!=(const LinkedListIterator<T>&) const;
+
+    LinkedListIterator<T> operator+(size_t) const;
+    LinkedListIterator<T>& operator+=(size_t);
+    LinkedListIterator<T>& operator++();
+    LinkedListIterator<T>& operator++(int);
+};
