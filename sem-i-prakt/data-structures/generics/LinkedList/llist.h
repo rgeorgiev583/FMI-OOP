@@ -15,7 +15,7 @@ class LinkedListIterator
 {
     Node<T>* node;
 
-    Node<T>* node_at(size_t) const;
+    Node<T>* node_at(size_t);
 
 public:
     LinkedListIterator(const Node<T>* = NULL);
@@ -40,18 +40,24 @@ class LinkedList
 {
     Node<T> *frontnode, *backnode;
 
-    void copy(const LinkedList<T>&);
+    void copy(size_t, const T&);
     void copy(const T*, size_t);
+    void copy(const LinkedListIterator<T>&, const LinkedListIterator<T>&);
+    void copy(const LinkedList<T>&);
     void destroy();
     T* base_at(size_t);
+    void
+    void pop_after(const LinkedListIterator<T>&);
     Node<T>* base_splice(const LinkedList<T>&, Node<T>*&);
     Node<T>* base_splice(const T*, size_t, Node<T>*&);
     void base_reverse(Node<T>*);
 
 public:
     LinkedList();
-    LinkedList(const LinkedList<T>&);
+    LinkedList(size_t, const T&);
     LinkedList(const T*, size_t);
+    LinkedList(LinkedListIterator<T>, LinkedListIterator<T>);
+    LinkedList(const LinkedList<T>&);
     LinkedList<T>& operator=(const LinkedList<T>&);
     ~LinkedList();
 
@@ -65,6 +71,10 @@ public:
     T& back();
     T& at(size_t);
     T& operator[](size_t);
+
+    void assign(size_t, const T&);
+    void assign(const T*, size_t);
+    void assign(LinkedListIterator<T>, LinkedListIterator<T>);
     void push_front(const T&);
     void push_back(const T&);
     void push_at(size_t, const T&);
@@ -77,6 +87,8 @@ public:
     LinkedListIterator<T> erase(LinkedListIterator<T>);
     LinkedListIterator<T> erase(LinkedListIterator<T>, LinkedListIterator<T>);
 
+    void swap(const LinkedList<T>&);
+    void clear();
     void splice(const LinkedList<T>&, size_t);
     void reverse();
 };

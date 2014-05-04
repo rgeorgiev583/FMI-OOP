@@ -2,24 +2,6 @@
 #include <cstring>
 #include "album.h"
 
-FindBuffer::FindBuffer(): title(NULL) {}
-
-FindBuffer::FindBuffer(const FindBuffer&): title(NULL) {}
-
-FindBuffer& FindBuffer::operator=(const FindBuffer&)
-{
-    delete[] title;
-    title = NULL;
-    lastfound = LinkedListIterator<Song>();
-
-    return *this;
-}
-
-FindBuffer::~FindBuffer()
-{
-    delete[] title;
-}
-
 void Album::setTitle(const char* _title)
 {
     if (!_title || !strlen(_title))
@@ -74,17 +56,9 @@ const char* Album::getArtist() const
 
 const Song* Album::findSong(const char* title) const
 {
-    findbuf.title = new char[strlen(title) + 1];
-    strcpy(findbuf.title, title);
-    findbuf.lastfound = NULL;
-    return findNextSong();
-}
+    LinkedListIterator<Song> i = songlist.begin();
 
-const Song* Album::findNextSong() const
-{
-    LinkedListIterator<Song> i = findbuf.lastfound ? findbuf.lastfound : songlist.begin();
-
-    while (i != songlist.end() && strcmp(i->getTitle(), findbuf.title))
+    while (i != songlist.end() && strcmp(i->getTitle(), title))
         i++;
 
     return i;
@@ -92,13 +66,13 @@ const Song* Album::findNextSong() const
 
 void Album::deleteDuplicates()
 {
-    size_t songcount = songlist.size();
-
-    for (size_t i = 0; i < songcount - 1; i++)
-        for (size_t j = i + 1; j < songcount; j++)
-            if (songlist[i] == songlist[j])
+    for (LinkedListIterator<Song> i = songlist.begin(); i + 1 != songlist.end(); i++)
+        for (LinkedListIterator<Song> j = i + 1; j != songlist.end(); j++)
+            if (*i == *j)
             {
+                delete j;
                 songlist.pop_at(j);
+                j--;
                 songcount--;
             }
 }

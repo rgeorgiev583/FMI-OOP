@@ -36,6 +36,7 @@
 		<Unit filename="album.h" />
 		<Unit filename="llist.cpp" />
 		<Unit filename="llist.h" />
+		<Unit filename="main.cpp" />
 		<Unit filename="song.cpp" />
 		<Unit filename="song.h" />
 		<Extensions>

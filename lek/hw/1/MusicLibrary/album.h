@@ -2,24 +2,10 @@
 #include "song.h"
 #pragma once
 
-struct FindBuffer
-{
-public:
-    char* title;
-    LinkedListIterator<Song> lastfound;
-
-    void destroy();
-    FindBuffer();
-    FindBuffer(const FindBuffer&);
-    FindBuffer& operator=(const FindBuffer&);
-    ~FindBuffer();
-};
-
 class Album
 {
     char title[100];
     LinkedList<Song> songlist;
-    FindBuffer findbuf;
 
     void setTitle(const char*);
 public:
@@ -31,7 +17,6 @@ public:
     size_t getLength() const;
     const char* getArtist() const;
     const Song* findSong(const char*) const;
-    const Song* findNextSong() const;
 
     // мутатори:
     void deleteDuplicates();
