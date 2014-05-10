@@ -1,8 +1,34 @@
 # depslib dependency file v1.0
-1398318335 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/1/MusicLibrary/song.cpp
+1399212390 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/1/MusicLibrary/song.cpp
 	<iostream>
 	<cstring>
 	"song.h"
 
-1398318328 /home/radoslav/prog/cpp/uni/oop/lek/hw/1/MusicLibrary/song.h
+1399224717 /home/radoslav/prog/cpp/uni/oop/lek/hw/1/MusicLibrary/song.h
+
+1399217497 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/1/MusicLibrary/album.cpp
+	<iostream>
+	<cstring>
+	"album.h"
+
+1399209135 /home/radoslav/prog/cpp/uni/oop/lek/hw/1/MusicLibrary/album.h
+	"llist.cpp"
+	"song.h"
+
+1399221232 /home/radoslav/prog/cpp/uni/oop/lek/hw/1/MusicLibrary/llist.cpp
+	<cstddef>
+	<iostream>
+	"llist.h"
+
+1399207952 /home/radoslav/prog/cpp/uni/oop/lek/hw/1/MusicLibrary/llist.h
+	<cstddef>
+
+1399221232 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/1/MusicLibrary/llist.cpp
+	<cstddef>
+	<iostream>
+	"llist.h"
+
+1399222897 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/1/MusicLibrary/main.cpp
+	<iostream>
+	"album.h"
 

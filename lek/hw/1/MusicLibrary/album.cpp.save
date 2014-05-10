@@ -18,6 +18,21 @@ void Album::setTitle(const char* _title)
     }
 }
 
+LinkedListIterator<Song> Album::base_findSong(const char* title) const
+{
+    LinkedListIterator<Song> i = songlist.begin();
+
+    while (i != songlist.end() && strcmp(i->getTitle(), title))
+        i++;
+
+    return i;
+}
+
+Album::Album()
+{
+    strcpy(title, "(Unknown title)");
+}
+
 Album::Album(char* _title)
 {
     setTitle(_title);
@@ -30,25 +45,25 @@ Album::Album(char* _title, const LinkedList<Song>& _songlist): songlist(_songlis
 
 size_t Album::getLength() const
 {
-    size_t songcount = songlist.size(), albumlength = 0;
+    size_t albumlength = 0;
 
-    for (size_t i = 0; i < songcount; i++)
-        albumlength += songlist[i].getLength();
+    for (LinkedListIterator<Song> i = songlist.begin(); i != songlist.end(); i++)
+        albumlength += i->getLength();
 
     return albumlength;
 }
 
 const char* Album::getArtist() const
 {
-    size_t songcount = songlist.size(), i = 0;
     char* artist = new char[100];
-    strcpy(artist, songlist[0].getArtist());
+    strcpy(artist, songlist.front().getArtist());
+    LinkedListIterator<Song> i = songlist.begin();
 
     do
         i++;
-    while (i < songcount && !strcmp(songlist[i].getArtist(), artist));
+    while (i != songlist.end() && !strcmp(artist, i->getArtist()));
 
-    if (i < songcount)
+    if (i != songlist.end())
         strcpy(artist, "Various Artists");
 
     return artist;
@@ -56,45 +71,73 @@ const char* Album::getArtist() const
 
 const Song* Album::findSong(const char* title) const
 {
+    return base_findSong(title);
+}
+
+void Album::appendSong(const Song& song)
+{
+    songlist.push_back(song);
+}
+
+void Album::deleteSong(const char* title)
+{
+    LinkedListIterator<Song> song = base_findSong(title);
+
+    if (song != songlist.end())
+        songlist.erase(song);
+}
+
+void Album::deleteSong(const Song& song)
+{
     LinkedListIterator<Song> i = songlist.begin();
 
-    while (i != songlist.end() && strcmp(i->getTitle(), title))
+    while (i != songlist.end() && *i != song)
         i++;
 
-    return i;
+    if (*i == song)
+        songlist.erase(i);
 }
 
 void Album::deleteDuplicates()
 {
-    for (LinkedListIterator<Song> i = songlist.begin(); i + 1 != songlist.end(); i++)
-        for (LinkedListIterator<Song> j = i + 1; j != songlist.end(); j++)
+size_t ni=0;
+
+    for (LinkedListIterator<Song> i = songlist.begin(); i != songlist.end() && i + 1 != songlist.end(); i++){size_t nj=ni+1;
+        for (LinkedListIterator<Song> j = i + 1; j != songlist.end(); j != songlist.end() && j++){
             if (*i == *j)
             {
-                delete j;
-                songlist.pop_at(j);
-                j--;
-                songcount--;
+                std::cout << "DEBUG: (match) " << ni << " " << nj << std::endl;
+                std::cout << "DEBUG: " << j->getTitle() << std::endl;
+                j = songlist.erase(j);
+                std::cout << "DEBUG: " << songlist.back().getTitle() << std::endl;
+                std::cout << "ASSERT: " << (j == songlist.end()) << std::endl;
             }
+            std::cout << "DEBUG: " << ni << " " << nj << std::endl;
+            nj++;
+            std::cout << " DEBUG: " << ni << " " << nj << std::endl;
+        }
+        ni++;
+        std::cout << "  DEBUG: " << ni << " " << nj << std::endl;
+    }
 }
 
 void Album::detectAndRedirectCovers(const Album& other)
 {
-    size_t songcount = songlist.size();
     bool iscover = false;
 
-    for (size_t i = 0; i < songcount - 1; i++)
+    for (LinkedListIterator<Song> i = songlist.begin(); i != songlist.end(); i++)
     {
-        Song* found = other.findSong(songlist[i].getTitle());
-        iscover = found && found->getArtist() != songlist[i].getArtist() && found->getYear() < songlist[i].getYear();
+        const Song* found = other.findSong(i->getTitle());
+        iscover = found && found->getArtist() != i->getArtist() && found->getYear() < i->getYear();
     }
 
     if (iscover)
-        for (size_t i = 0; i < songcount - 1; i++)
+        for (LinkedListIterator<Song> i = songlist.begin(); i != songlist.end(); i++)
         {
-            Song* found = other.findSong(songlist[i].getTitle());
+            Song* found = other.findSong(i->getTitle());
 
-            if (found && found->getArtist() != songlist[i].getArtist() && found->getYear() < songlist[i].getYear())
-                songlist[i].setOriginal(found);
+            if (found && found->getArtist() != i->getArtist() && found->getYear() < i->getYear())
+                i->setOriginal(found);
         }
 }
 
@@ -105,10 +148,8 @@ void Album::print() const
     std::cout << "Album title: " << title << std::endl;
     std::cout << "----------------------------------------" << std::endl;
 
-    size_t songcount = songlist.size();
-
-    for (size_t i = 0; i < songcount; i++)
-        songlist[i].print();
+    for (LinkedListIterator<Song> i = songlist.begin(); i != songlist.end(); i++)
+        i->print();
 
     std::cout << "----------------------------------------" << std::endl;
     std::cout << std::endl;

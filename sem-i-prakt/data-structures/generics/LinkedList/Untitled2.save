@@ -1,0 +1,4 @@
+    void pop_head(const LinkedListIterator<T>&);
+    void pop_tail(const LinkedListIterator<T>&);
+    
+    

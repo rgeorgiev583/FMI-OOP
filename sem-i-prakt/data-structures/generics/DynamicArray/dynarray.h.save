@@ -29,6 +29,10 @@ public:
     T& back();
     T& at(size_t);
     T& operator[](size_t);
+
     void push_back(const T&);
     bool pop_back();
+    
+    void swap(DynamicArray<T>&);
+    void clear();
 };

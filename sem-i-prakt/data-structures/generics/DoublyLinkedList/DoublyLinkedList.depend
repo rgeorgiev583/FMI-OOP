@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1399207939 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/generics/DoublyLinkedList/llist.cpp
+	<cstddef>
+	"llist.h"
+
+1399207952 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/generics/DoublyLinkedList/llist.h
+	<cstddef>
+
+1399065537 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/generics/DoublyLinkedList/main.cpp
+	<iostream>
+	"llist.cpp"
+
+1399214275 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/data-structures/generics/DoublyLinkedList/llist.cpp
+	<cstddef>
+	"llist.h"
+

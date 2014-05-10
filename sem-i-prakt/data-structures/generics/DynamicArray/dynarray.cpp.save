@@ -155,3 +155,20 @@ bool DynamicArray<T>::pop_back()
         return true;
     }
 }
+
+template<typename T>
+void DynamicArray<T>::swap(DynamicArray<T>& other)
+{
+    DynamicArray<T> x = *this;
+    operator=(other);
+    other.operator=(x);
+}
+
+template<typename T>
+void DynamicArray<T>::clear()
+{
+    destroy();
+    
+    size = 0;
+    capacity = INIT;
+}

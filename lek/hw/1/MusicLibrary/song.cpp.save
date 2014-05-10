@@ -2,19 +2,25 @@
 #include <cstring>
 #include "song.h"
 
-Song::Song(): year(0), length(0), original(this)
+Song::Song(): year(0), length(0), original(NULL)
 {
     strcpy(title, "(Unknown title)");
     strcpy(artist, "(Unknown artist)");
 }
 
-Song::Song(char* _title): year(0), length(0), original(this)
+Song::Song(char* _title): year(0), length(0), original(NULL)
 {
     setTitle(_title);
     strcpy(artist, "(Unknown artist)");
 }
 
-Song::Song(char* _title, char* _artist, int _year = 0, size_t _length = 0, Song* _original = this): year(_year), length(_length), original(_original)
+Song::Song(char* _title, char* _artist, int _year = 0, size_t _length = 0): year(_year), length(_length), original(NULL)
+{
+    setTitle(_title);
+    setArtist(_artist);
+}
+
+Song::Song(char* _title, char* _artist, Song* _original, int _year = 0, size_t _length = 0): year(_year), length(_length), original(_original)
 {
     setTitle(_title);
     setArtist(_artist);
@@ -82,14 +88,14 @@ void Song::setLength(size_t _length)
     length = _length;
 }
 
-const Song& Song::getOriginal() const
+const Song* Song::getOriginal() const
 {
-    return *original;
+    return original;
 }
 
-void Song::setOriginal(const Song& _original)
+void Song::setOriginal(Song* _original)
 {
-    original = &_original;
+    original = _original;
 }
 
 bool Song::isEqual(const Song& other) const
@@ -98,6 +104,14 @@ bool Song::isEqual(const Song& other) const
 }
 
 bool Song::operator==(const Song& other) const
+{
+    return isEqual(other);
+}
+
+bool Song::operator!=(const Song& other) const
+{
+    return !isEqual(other);
+}
 
 void Song::print() const
 {

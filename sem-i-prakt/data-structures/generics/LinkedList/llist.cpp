@@ -18,7 +18,7 @@ Node<T>* LinkedListIterator<T>::node_at(size_t pos)
 }
 
 template <typename T>
-LinkedListIterator<T>::LinkedListIterator(const Node<T>* newnode = NULL): node(newnode) {}
+LinkedListIterator<T>::LinkedListIterator(const Node<T>* _node = NULL): node(_node) {}
 
 template <typename T>
 LinkedListIterator<T>::operator Node<T>*()
@@ -39,9 +39,27 @@ T& LinkedListIterator<T>::operator*()
 }
 
 template <typename T>
+T* LinkedListIterator<T>::operator->()
+{
+    return &node->data;
+}
+
+template <typename T>
 T& LinkedListIterator<T>::operator[](size_t pos)
 {
     return node_at(pos)->data;
+}
+
+template <typename T>
+bool LinkedListIterator<T>::operator==(const LinkedListIterator<T>& other) const
+{
+    return node == other.node;
+}
+
+template <typename T>
+bool LinkedListIterator<T>::operator!=(const LinkedListIterator<T>& other) const
+{
+    return node != other.node;
 }
 
 template <typename T>
@@ -60,25 +78,17 @@ LinkedListIterator<T>& LinkedListIterator<T>::operator+=(size_t pos)
 template <typename T>
 LinkedListIterator<T>& LinkedListIterator<T>::operator++()
 {
-    return operator+=(1);
+    node = node->next;
+    return *this;
 }
 
 template <typename T>
-LinkedListIterator<T>& LinkedListIterator<T>::operator++(int)
-{
-    return operator++();
-}
 
-template <typename T>
-bool LinkedListIterator<T>::operator==(const LinkedListIterator<T>& other) const
+LinkedListIterator<T> LinkedListIterator<T>::operator++(int)
 {
-    return node == other.node;
-}
-
-template <typename T>
-bool LinkedListIterator<T>::operator!=(const LinkedListIterator<T>& other) const
-{
-    return node != other.node;
+    LinkedListIterator<T> oldvalue = *this;
+    operator++();
+    return oldvalue;
 }
 
 template <typename T>
@@ -91,7 +101,8 @@ void LinkedList<T>::copy(size_t n, const T& data)
 template <typename T>
 void LinkedList<T>::copy(const T* arr, size_t arrlen)
 {
-    backnode = base_splice(arr, arrlen, frontnode);
+    for (size_t i = 0; i < arrlen; i++)
+        push_back(arr[i]);
 }
 
 template <typename T>
@@ -104,69 +115,14 @@ void LinkedList<T>::copy(const LinkedListIterator<T>& from, const LinkedListIter
 template <typename T>
 void LinkedList<T>::copy(const LinkedList<T>& other)
 {
-    backnode = base_splice(other, frontnode);
+    for (LinkedListIterator<T> i = other.begin(); i != other.end(); i++)
+        push_back(*i);
 }
 
 template <typename T>
 void LinkedList<T>::destroy()
 {
-    while(pop_front());
-}
-
-template <typename T>
-T* LinkedList<T>::base_at(size_t pos)
-{
-    size_t i = 0;
-    Node<T>* node;
-
-    for (node = frontnode; node && i < pos; node = node->next)
-        i++;
-
-    return &node->data;
-}
-
-
-
-template <typename T>
-LinkedListIterator<T>* LinkedList<T>::base_splice(const LinkedList<T>& other, LinkedListIterator<T>*& atnode)
-{
-    if (other.empty())
-        return atnode;
-    else
-    {
-        pop_
-
-        Node<T>* lastnode = atnode = new Node<T>(other.frontnode->data);
-
-        for (Node<T>* i = other.frontnode->next; i; i = i->next)
-        {
-            Node<T>* node = new Node<T>(i->data);
-            lastnode->next = node;
-            lastnode = node;
-        }
-
-        return lastnode;
-    }
-}
-
-template <typename T>
-Node<T>* LinkedList<T>::base_splice(const T* arr, size_t arrlen, Node<T>*& atnode)
-{
-    if (!arrlen)
-        return atnode;
-    else
-    {
-        Node<T>* lastnode = atnode = new Node<T>(arr[0]);
-
-        for (size_t i = 1; i < arrlen; i++)
-        {
-            Node<T>* node = new Node<T>(arr[i]);
-            lastnode->next = node;
-            lastnode = node;
-        }
-
-        return lastnode;
-    }
+    while (pop_front());
 }
 
 template <typename T>
@@ -192,6 +148,12 @@ template <typename T>
 LinkedList<T>::LinkedList(const T* arr, size_t arrlen)
 {
     copy(arr, arrlen);
+}
+
+template <typename T>
+LinkedList<T>::LinkedList(const LinkedListIterator<T>& from, const LinkedListIterator<T>& to)
+{
+    copy(from, to);
 }
 
 template <typename T>
@@ -227,7 +189,7 @@ LinkedListIterator<T> LinkedList<T>::begin()
 template <typename T>
 LinkedListIterator<T> LinkedList<T>::end()
 {
-    return LinkedListIterator<T>(backnode->next);
+    return empty() ? begin() : LinkedListIterator<T>(backnode->next);
 }
 
 template <typename T>
@@ -241,7 +203,7 @@ size_t LinkedList<T>::size() const
 {
     size_t len = 0;
 
-    for (Node<T>* i = frontnode; i; i = i->next)
+    for (LinkedListIterator<T> i = begin(); i != end(); i++)
         len++;
 
     return len;
@@ -260,19 +222,6 @@ T& LinkedList<T>::back()
 }
 
 template <typename T>
-T& LinkedList<T>::at(size_t pos)
-{
-    T* atdata = base_at(pos);
-    return atdata ? *atdata : back();
-}
-
-template <typename T>
-T& LinkedList<T>::operator[](size_t pos)
-{
-    return at(pos);
-}
-
-template <typename T>
 void LinkedList<T>::assign(size_t n, const T& data)
 {
     clear();
@@ -284,6 +233,13 @@ void LinkedList<T>::assign(const T* arr, size_t arrlen)
 {
     clear();
     copy(arr, arrlen);
+}
+
+template <typename T>
+void LinkedList<T>::assign(const LinkedListIterator<T>& from, const LinkedListIterator<T>& to)
+{
+    clear();
+    copy(from, to);
 }
 
 template <typename T>
@@ -305,19 +261,6 @@ void LinkedList<T>::push_back(const T& data)
         backnode->next = node;
         backnode = node;
     }
-}
-
-template <typename T>
-void LinkedList<T>::push_at(size_t pos, const T& data)
-{
-    size_t i = 0;
-    Node<T>* node;
-
-    for (node = frontnode; node && i < pos; node = node->next)
-        i++;
-
-    Node<T> *newnode = new Node<T>(data, node->next);
-    node->next = newnode;
 }
 
 template <typename T>
@@ -352,42 +295,161 @@ bool LinkedList<T>::pop_back()
 }
 
 template <typename T>
-bool LinkedList<T>::pop_at(size_t pos)
+LinkedListIterator<T> LinkedList<T>::insert(const LinkedListIterator<T>& atpos, const T& data)
+{
+    Node<T>* node = (Node<T>*) atpos;
+
+    if (node)
+    {
+        Node<T>* newnode = new Node<T>(data, node->next);
+        node->next = newnode;
+        return LinkedListIterator<T>(newnode);
+    }
+    else
+        return LinkedListIterator<T>();
+}
+
+template <typename T>
+void LinkedList<T>::insert(const LinkedListIterator<T>& atpos, size_t n, const T& data)
+{
+    Node<T>* node = (Node<T>*) atpos;
+
+    if (node)
+    {
+        Node<T>* oldnextnode = node->next;
+
+        for (size_t i = 0; i < n; i++)
+        {
+            Node<T>* newnode = new Node<T>(data);
+            node->next = newnode;
+            node = newnode;
+        }
+
+        node->next = oldnextnode;
+    }
+}
+
+template <typename T>
+void LinkedList<T>::insert(const LinkedListIterator<T>& atpos, const T* arr, size_t arrlen)
+{
+    Node<T>* node = (Node<T>*) atpos;
+
+    if (node)
+    {
+        Node<T>* oldnextnode = node->next;
+
+        for (size_t i = 0; i < arrlen; i++)
+        {
+            Node<T>* newnode = new Node<T>(arr[i]);
+            node->next = newnode;
+            node = newnode;
+        }
+
+        node->next = oldnextnode;
+    }
+}
+
+template <typename T>
+void LinkedList<T>::insert(const LinkedListIterator<T>& atpos, const LinkedListIterator<T>& from, const LinkedListIterator<T>& to)
+{
+    Node<T>* node = (Node<T>*) atpos;
+
+    if (node)
+    {
+        Node<T>* oldnextnode = node->next;
+
+        for (LinkedListIterator<T> i = from; i != to; i++)
+        {
+            Node<T>* newnode = new Node<T>(*i);
+            node->next = newnode;
+            node = newnode;
+        }
+
+        node->next = oldnextnode;
+    }
+}
+
+template <typename T>
+LinkedListIterator<T> LinkedList<T>::erase(const LinkedListIterator<T>& atpos)
 {
     if (empty())
-        return false;
+        return LinkedListIterator<T>();
+    else if (atpos == begin())
+    {
+        pop_front();
+        return begin();
+    }
     else
     {
-        size_t i = 0;
-        Node<T>* prevnode;
+        LinkedListIterator<T> i = begin(), atend = end();
 
-        for (prevnode = frontnode; prevnode && i - 2 < pos; prevnode = prevnode->next)
+        while (i + 1 != atend && i + 1 != atpos)
             i++;
 
-        Node<T>* node = prevnode->next;
-        prevnode->next = node->next;
-        delete node;
-        return true;
+        if (i + 1 == atpos)
+        {
+            Node<T> *prevnode = (Node<T>*) i, *node = prevnode->next;
+            prevnode->next = node->next;
+            delete node;
+            return LinkedListIterator<T>(node);
+        }
+        else
+            return LinkedListIterator<T>();
     }
+}
+
+template <typename T>
+LinkedListIterator<T> LinkedList<T>::erase(const LinkedListIterator<T>& from, const LinkedListIterator<T>& to)
+{
+    if (empty())
+        return LinkedListIterator<T>();
+    else
+    {
+        LinkedListIterator<T> i = from, atend = end();
+
+        while (i != atend && i != to)
+            i = erase(i);
+
+        return i;
+    }
+}
+
+template <typename T>
+void LinkedList<T>::swap(const LinkedList<T>& other)
+{
+    LinkedList<T> x(*this);
+    operator=(other);
+    other.operator=(x);
 }
 
 template <typename T>
 void LinkedList<T>::clear()
 {
     destroy();
-    frontnode = backnode = NULL;
 }
 
 template <typename T>
-void LinkedList<T>::splice(const LinkedList<T>& list, size_t pos)
+void LinkedList<T>::splice(const LinkedListIterator<T>& atpos, LinkedList<T>& other)
 {
-    size_t i = 0;
-    Node<T>* node;
+    insert(atpos, other.begin(), other.end());
+    other.clear();
+}
 
-    for (node = frontnode; node && i < pos; node = node->next)
-        i++;
+template <typename T>
+void LinkedList<T>::splice(const LinkedListIterator<T>& atpos, LinkedList<T>& other, const LinkedListIterator<T>& other_atpos)
+{
+    if (other_atpos)
+    {
+        insert(atpos, *other_atpos);
+        other.erase(other_atpos);
+    }
+}
 
-    backnode = base_splice(list, node);
+template <typename T>
+void LinkedList<T>::splice(const LinkedListIterator<T>& atpos, LinkedList<T>& other, const LinkedListIterator<T>& other_from, const LinkedListIterator<T>& other_to)
+{
+    insert(atpos, other_from, other_to);
+    other.erase(other_from, other_to);
 }
 
 template <typename T>
