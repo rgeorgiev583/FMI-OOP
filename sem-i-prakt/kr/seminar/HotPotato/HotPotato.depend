@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1402559248 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/seminar/HotPotato/game.cpp
+	"game.h"
+
+1402559173 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/seminar/HotPotato/game.h
+	<iostream>
+	"player.h"
+
+1402558947 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/seminar/HotPotato/player.h
+
+1402559212 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/seminar/HotPotato/main.cpp
+	<iostream>
+	"game.h"
+
+1402559220 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/seminar/HotPotato/player.cpp
+	"player.h"
+	<cstring>
+

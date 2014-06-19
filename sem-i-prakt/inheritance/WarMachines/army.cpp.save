@@ -1,0 +1,23 @@
+#include <iostream>
+#include "army.h"
+
+Army::Army()
+{
+    mavchines
+}
+
+void Army::addMachine(WarMachine* m)
+{
+
+}
+
+void Army::fire()
+{
+    for (size_t i=0; i<machineCount;i++)
+        machines[i]->fire();
+}
+
+void Army::notify(WarMachine* m)
+{
+    std::cout << m->name << " has fired!" << std::endl;
+}

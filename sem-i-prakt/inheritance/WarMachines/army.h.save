@@ -1,0 +1,14 @@
+#include "warmachine.h"
+
+class Army: public Observer
+{
+    WarMachine** machines;
+    size_t machineCount;
+
+public:
+    Army();
+    void reallocate();
+    void addMachine(WarMachine*);
+    void fire();
+    void notify(WarMachine*);
+};

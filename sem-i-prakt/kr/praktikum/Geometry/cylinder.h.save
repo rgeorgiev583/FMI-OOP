@@ -1,0 +1,16 @@
+#ifndef CYLINDER_H_INCLUDED
+#define CYLINDER_H_INCLUDED
+
+class StraightCircularCylinder: public StraightBody, protected Circle
+{
+public:
+    StraightCircularCylinder(double = 0, double = 0);
+
+    double getTotalSurfaceArea() const;
+    double getVolume() const;
+
+    friend ostream& operator<<(ostream&, const StraightCircularCylinder&);
+    friend istream& operator>>(istream&, StraightCircularCylinder&);
+};
+
+#endif // CYLINDER_H_INCLUDED

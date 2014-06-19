@@ -1,0 +1,106 @@
+#include <iostream>
+using namespace std;
+
+class A
+{
+public:
+    virtual void f()
+    {
+        cout << "Hello world from A!" << endl;
+    }
+
+    void g()
+    {
+        cout << "Hello World from A!" << endl;
+    }
+};
+
+class B: public A
+{
+public:
+    virtual void f()
+    {
+        cout << "Hello world from B!" << endl;
+    }
+
+    virtual void g()
+    {
+        cout << "Hello World from B!" << endl;
+    }
+};
+
+class C: public A
+{
+public:
+    void f()
+    {
+        cout << "Hello world from C!" << endl;
+    }
+
+    void g()
+    {
+        cout << "Hello World from C!" << endl;
+    }
+};
+
+class D: public B
+{
+public:
+    void f()
+    {
+        cout << "Hello world from D!" << endl;
+    }
+
+    void g()
+    {
+        cout << "Hello World from D!" << endl;
+    }
+};
+
+class E: public B
+{
+public:
+    void f()
+    {
+        cout << "Hello world from E!" << endl;
+    }
+
+    void g()
+    {
+        cout << "Hello World from E!" << endl;
+    }
+};
+
+class F: public C
+{
+public:
+    void f()
+    {
+        cout << "Hello world from F!" << endl;
+    }
+
+    void g()
+    {
+        cout << "Hello World from F!" << endl;
+    }
+};
+
+int main()
+{
+	//A* ptrA;
+	//A obA;
+	B* ptrB;
+	B obB;
+	D obD;
+	//ptrA = &obA;
+	//ptrA->f();
+	//ptrA->g();
+	ptrB = &obB;
+	ptrB->f();
+	ptrB->g();
+	ptrB = &obD;
+	ptrB->f();
+	ptrB->g();
+
+	return 0;
+}

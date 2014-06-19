@@ -1,0 +1,6 @@
+#include "criminal-film.cpp"
+
+CriminalFilm::CriminalFilm(): Film() {}
+
+CriminalFilm::CriminalFilm(const char* _name, int _year = 0, int _victims = 0):
+        Film()name), year(_year), victims(_victims) {}

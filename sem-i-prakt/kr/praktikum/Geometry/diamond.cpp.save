@@ -1,0 +1,50 @@
+#include <cmath>
+
+#include "diamond.h"
+
+Diamond::Diamond(double _side = 0, double _angle = 0):
+        side(_side), angle(_angle) {}
+
+double Diamond::getSide() const
+{
+    return side;
+}
+
+double Diamond::getAngle() const
+{
+    return angle;
+}
+
+double Diamond::getPerimeter() const
+{
+    return 4 * side;
+}
+
+double Diamond::getArea() const
+{
+    return side * side * sin(angle);
+}
+
+/* // using height
+double Diamond::getArea() const
+{
+    return side * height;
+}
+*/
+
+void Diamond::setSide(double)
+
+ostream& operator<<(ostream& os, const Diamond& d)
+{
+    os << "== Diamond ==" << std::endl;
+    os << "Side: " << side << std::endl;
+    os << "Angle (in radians): " << angle << std::endl;
+    os << "Perimeter: " << getPerimeter() << std::endl;
+    os << "Area: " << getArea() << std::endl;
+    os << std::endl;
+}
+
+istream& operator>>(istream& is, Diamond& d);
+{
+    is >> side >> angle;
+}

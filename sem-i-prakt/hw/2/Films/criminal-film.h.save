@@ -1,0 +1,14 @@
+#ifndef CRIMINAL-FILM_H_INCLUDED
+#define CRIMINAL-FILM_H_INCLUDED
+
+class CriminalFilm: public Film
+{
+    int victims;
+
+public:
+    CriminalFilm();
+    CriminalFilm(char*, int, int);
+    
+};
+
+#endif // CRIMINAL-FILM_H_INCLUDED

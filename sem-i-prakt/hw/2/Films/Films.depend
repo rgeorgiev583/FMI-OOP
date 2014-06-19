@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1402133025 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/hw/2/Films/animation.cpp
+	"animation.h"
+	<cstring>
+
+1402132950 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/hw/2/Films/animation.h
+	"film.h"
+
+1402132968 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/hw/2/Films/film.h
+	"ifilm.h"
+
+1402131056 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/hw/2/Films/ifilm.h
+
+1402133049 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/hw/2/Films/criminal-film.cpp
+	"criminal-film.h"
+
+1402132961 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/hw/2/Films/criminal-film.h
+	"film.h"
+
+1402133031 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/hw/2/Films/film.cpp
+	"film.h"
+	<cstring>
+

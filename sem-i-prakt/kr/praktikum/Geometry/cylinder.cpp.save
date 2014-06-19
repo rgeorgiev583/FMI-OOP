@@ -1,0 +1,26 @@
+#include "cylinder.h"
+
+StraightCircularCylinder::StraightCircularCylinder(double baseRadius = 0,
+        double height = 0): StraightBody(height), Circle(baseRadius) {}
+
+std::ostream& operator<<(std::ostream& os, const StraightCircularCylinder& c)
+{
+    os << "== Straight diamond prism ==" << std::endl;
+    //os << "Side: " << side << std::endl;
+    //os << "Angle (in radians): " << angle << std::endl;
+    os << "Base radius: " << Circle::getRadius() << std::endl;
+    operator<<(os, *this);
+    os << "Base perimeter: " << Circle::getPerimeter() << std::endl;
+    os << "Base area: " << Circle::getArea() << std::endl;
+    os << "Total surface area: " << getTotalSurfaceArea() << std::endl;
+    os << "Volume: " << getVolume() << std::endl;
+    os << std::endl;
+}
+
+std::istream& operator>>(std::istream& is, StraightCircularCylinder& d);
+{
+    double baseRadius;
+    is >> baseRadius;
+    operator>>(is, *this);
+    Circle::setRadius(baseRadius);
+}

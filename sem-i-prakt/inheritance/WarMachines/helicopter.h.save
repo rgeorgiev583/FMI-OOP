@@ -1,0 +1,11 @@
+#include "warmachine.h"
+
+class Helicopter: WarMachine
+{
+    double maxAlt;
+    
+public:
+    Helicopter(char*, long, long);
+    void fire();
+    void printStats();
+}

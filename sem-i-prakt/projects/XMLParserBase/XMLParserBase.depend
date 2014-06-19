@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1401119019 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/projects/XMLParserBase/ptrlist.cpp
+	"ptrlist.h"
+
+1401117779 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/projects/XMLParserBase/ptrlist.h
+	<list>
+
+1401072115 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/projects/XMLParserBase/main.cpp
+	<iostream>
+
+1401118937 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/projects/XMLParserBase/xmldom.cpp
+	<iostream>
+	"xmldom.h"
+
+1401072499 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/projects/XMLParserBase/xmldom.h
+	<iostream>
+	<list>
+	<map>
+	"ptrlist.cpp"
+
+1401119019 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/projects/XMLParserBase/ptrlist.cpp
+	"ptrlist.h"
+

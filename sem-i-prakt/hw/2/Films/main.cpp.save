@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	CriminalFilm cf("Pulp Fiction", 1994, 1234);
+	Animation ani("Tom & Jerry" , 1);
+	
+
+	return 0;
+}

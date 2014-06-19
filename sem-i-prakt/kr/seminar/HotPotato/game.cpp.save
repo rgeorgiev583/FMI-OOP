@@ -1,0 +1,50 @@
+#include "game.h"
+
+Game::Game(size_t _maxTurns): playerCount(0), maxTurns(_maxTurns),
+        currentPlayer(0), numberOfTurns(0), numberOfLosers(0) {}
+
+bool Game::hasFinished() const
+{
+    return numberOfLosers == playerCount - 1;
+}
+
+void Game::addPlayer(const char* name)
+{
+    if (playerCount < 20)
+        players[playerCount++] = new Player(name);
+    else
+        std::cerr << "ERROR: Player cannot be added. Maximum player count is 20." << std::endl;
+}
+
+void Game::play(std::ostream& os = std::cout)
+{
+    if (numberOfLosers < playerCount - 1)
+        if (currentPlayer < playerCount)
+        {
+            if (numberOfTurns == maxTurns)
+            {
+                players[currentPlayer].lose();
+                os << players[currentPlayer].getName() << " has been eliminated."<< std::endl;
+            }
+            currentPlayer++;
+            numberOfTurns++;
+        }
+        else
+            currentPlayer = 0;
+}
+
+std::ostream& operator<<(std::ostream& os, const Game& gm)
+{
+    os << "== Hot Potato game ==" << std::endl;
+    os << "Maximum number of turns before the game finishes: " << gm.maxTurns
+            << std::endl;
+
+    os << "There are " << gm.playerCount << " players in the game:" << std::endl;
+    for (size_t i = 0; i < gm.playerCount; i++)
+        os << "- " << gm.players[i].getName() <<
+                (gm.players[i].hasLost() ? " (has already lost)" : "") << std::endl;
+
+    if (gm.hasFinished())
+        os << "The game has finished. The player who won was "
+                << gm.players[currentPlayer].getName() << std::endl;
+}

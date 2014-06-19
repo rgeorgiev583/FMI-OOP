@@ -1,0 +1,21 @@
+#ifndef CIRCLE_H_INCLUDED
+#define CIRCLE_H_INCLUDED
+
+#include "shape.h"
+
+class Circle: public Shape
+{
+    double radius;
+
+public:
+    Circle(double = 0);
+
+    double 
+    double getPerimeter() const;
+    double getArea() const;
+
+    friend ostream& operator<<(ostream&, const Diamond&);
+    friend istream& operator>>(istream&, Diamond&);
+};
+
+#endif // CIRCLE_H_INCLUDED

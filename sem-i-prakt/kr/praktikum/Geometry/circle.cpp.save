@@ -1,0 +1,39 @@
+#include <cmath>
+
+#include "circle.h"
+
+Circle::Circle(double _side = 0, double _angle = 0, double _height = 0):
+        side(_side), angle(_angle), height(_height) {}
+
+double Circle:getRadius() const
+{
+    return radius;
+}
+
+double Circle::getPerimeter() const
+{
+    return 2 * M_PI * side;
+}
+
+double Circle::getArea() const
+{
+    return M_PI * side * side;
+}
+
+void setRadius(double _radius)
+{
+}
+
+ostream& operator<<(ostream& os, const Circle& d)
+{
+    os << "== Circle ==" << std::endl;
+    os << "Radius: " << radius << std::endl;
+    os << "Perimeter: " << getPerimeter() << std::endl;
+    os << "Area: " << getArea() << std::endl;
+    os << std::endl;
+}
+
+istream& operator>>(istream& is, Circle& d);
+{
+    is >> radius;
+}

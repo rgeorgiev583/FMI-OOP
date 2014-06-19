@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1403088965 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/2/FormulaReader/binary-operation.cpp
+	"binary-operation.h"
+
+1403058605 /home/radoslav/prog/cpp/uni/oop/lek/hw/2/FormulaReader/binary-operation.h
+	"formula.h"
+
+1403056404 /home/radoslav/prog/cpp/uni/oop/lek/hw/2/FormulaReader/formula.h
+	"printable.h"
+	"cloneable.h"
+
+1403056313 /home/radoslav/prog/cpp/uni/oop/lek/hw/2/FormulaReader/printable.h
+	<iostream>
+
+1403055940 /home/radoslav/prog/cpp/uni/oop/lek/hw/2/FormulaReader/cloneable.h
+
+1403089110 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/2/FormulaReader/conditional.cpp
+	"conditional.h"
+
+1403059119 /home/radoslav/prog/cpp/uni/oop/lek/hw/2/FormulaReader/conditional.h
+	"formula.h"
+
+1403061766 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/2/FormulaReader/read.cpp
+	"read.h"
+
+1403061811 /home/radoslav/prog/cpp/uni/oop/lek/hw/2/FormulaReader/read.h
+	"formula.h"
+
+1403131744 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/2/FormulaReader/main.cpp
+	<iostream>
+	"formula-parser.h"
+
+1403131623 /home/radoslav/prog/cpp/uni/oop/lek/hw/2/FormulaReader/formula-parser.h
+	<cstdlib>
+	<sstream>
+	"formula.h"
+	"constant.h"
+	"binary-operation.h"
+	"read.h"
+	"conditional.h"
+
+1403058410 /home/radoslav/prog/cpp/uni/oop/lek/hw/2/FormulaReader/constant.h
+	"formula.h"
+

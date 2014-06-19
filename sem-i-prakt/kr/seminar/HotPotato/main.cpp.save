@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	Game game(5);
+	game.addPlayer("Ivan");
+	game.addPlayer("Pesho");
+	game.addPlayer("Sasho");
+	game.addPlayer("Kosio");
+	
+	while()
+
+	return 0;
+}

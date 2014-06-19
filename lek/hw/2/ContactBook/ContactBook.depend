@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1403049935 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/2/ContactBook/contact-book.cpp
+	"contact-book.h"
+
+1402970367 /home/radoslav/prog/cpp/uni/oop/lek/hw/2/ContactBook/contact-book.h
+	"contact.h"
+	"dictionary.cpp"
+
+1403050536 /home/radoslav/prog/cpp/uni/oop/lek/hw/2/ContactBook/contact.h
+	<iostream>
+
+1403047884 /home/radoslav/prog/cpp/uni/oop/lek/hw/2/ContactBook/dictionary.cpp
+	"dictionary.h"
+
+1403042039 /home/radoslav/prog/cpp/uni/oop/lek/hw/2/ContactBook/dictionary.h
+	<iostream>
+
+1402971585 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/2/ContactBook/contact.cpp
+	"contact.h"
+
+1403047884 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/2/ContactBook/dictionary.cpp
+	"dictionary.h"
+
+1403049671 source:/home/radoslav/prog/cpp/uni/oop/lek/hw/2/ContactBook/main.cpp
+	<iostream>
+	"contact-book.h"
+

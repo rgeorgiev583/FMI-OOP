@@ -1,0 +1,28 @@
+#include "prism.h"
+
+StraightDiamondPrism::StraightDiamondPrism(double baseSide = 0, double baseAngle = 0, double height = 0):
+        StraightBody(height), Diamond(baseSide, baseAngle) {}
+
+std::ostream& operator<<(std::ostream& os, const StraightDiamondPrism& d)
+{
+    os << "== Straight diamond prism ==" << std::endl;
+    //os << "Side: " << side << std::endl;
+    //os << "Angle (in radians): " << angle << std::endl;
+    os << "Base side: " << d.Diamond::getSide() << std::endl;
+    os << "Base angle: " << d.Diamond::getAngle() << std::endl;
+    operator<<(os, *this);
+    os << "Base perimeter: " << d.Diamond::getPerimeter() << std::endl;
+    os << "Base area: " << d.Diamond::getArea() << std::endl;
+    os << "Total surface area: " << d.getTotalSurfaceArea() << std::endl;
+    os << "Volume: " << .getVolume() << std::endl;
+    os << std::endl;
+}
+
+std::istream& operator>>(std::istream& is, StraightDiamondPrism& d);
+{
+    double baseSide, baseAngle;
+    is >> baseSide >> baseAngle;
+    operator>>(is, *this);
+    d.Diamond::setSide(baseSide);
+    d.Diamond::setAngle(baseAngle);
+}

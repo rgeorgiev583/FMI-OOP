@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1402143963 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/praktikum/Geometry/body.cpp
+	"prism.h"
+
+1402143000 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/praktikum/Geometry/prism.h
+	"body.h"
+	"diamond.h"
+
+1402143960 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/praktikum/Geometry/body.h
+	<iostream>
+	"shape.h"
+
+1402141804 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/praktikum/Geometry/shape.h
+	<iostream>
+
+1402141784 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/praktikum/Geometry/diamond.h
+	"shape.h"
+
+1402143172 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/praktikum/Geometry/circle.cpp
+	<cmath>
+	"circle.h"
+
+1402143113 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/praktikum/Geometry/circle.h
+	"shape.h"
+
+1402144002 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/praktikum/Geometry/cylinder.cpp
+	"cylinder.h"
+
+1402141860 /home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/praktikum/Geometry/cylinder.h
+	"body.h"
+	"circle.h"
+
+1402143712 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/praktikum/Geometry/diamond.cpp
+	<cmath>
+	"diamond.h"
+
+1402144055 source:/home/radoslav/prog/cpp/uni/oop/sem-i-prakt/kr/praktikum/Geometry/main.cpp
+	<iostream>
+	"body.h"
+	"prism.h"
+	"cylinder.h"
+

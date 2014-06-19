@@ -1,0 +1,28 @@
+#ifndef LIBRARY_H_INCLUDED
+#define LIBRARY_H_INCLUDED
+
+class Library
+{
+    Book* books;
+    size_t length, capacity;
+
+    void resize()
+    void copy(const Library&);
+    void destroy();
+public:
+    Library();
+    Library(const Library&);
+    Library& operator=(const Library&);
+    ~Library();
+
+    Book& operator[](size_t);
+
+    size_t meanPagesOfBooks() const;
+
+    void appendBook(const Book&);
+    void removeBook(size_t);
+
+    void sortByTitle(const char*);
+};
+
+#endif // LIBRARY_H_INCLUDED

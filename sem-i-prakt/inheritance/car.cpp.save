@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+void Car::drive(size_t km)
+{
+    millage += km;
+}
+
+void Car::printInfo()
+{
+    cout << "Power: " << power << endl;
+    cout << "Color: " << color << endl;
+    cout << "Millage: " << millage << endl;
+    cout << "Fuel: " << fuel << endl;
+    cout << "Is transmission automatic: " << (automaticGearBox ? "Yes" : "No") << endl;
+    
+}
+
+
+
+int main()
+{
+	
+
+	return 0;
+}

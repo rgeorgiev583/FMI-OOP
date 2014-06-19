@@ -1,0 +1,20 @@
+#ifndef PRISM_H_INCLUDED
+#define PRISM_H_INCLUDED
+
+#include "body.h"
+
+class Prism: public StraightBody, protected Diamond
+{
+public:
+    Prism(double = 0, double = 0, double = 0);
+
+    double getBasePerimeter() const;
+    double getBaseArea() const;
+    double getTotalSurfaceArea() const;
+    double getVolume() const;
+
+    friend ostream& operator<<(ostream&, const Prism&);
+    friend istream& operator>>(istream&, Prism&);
+};
+
+#endif // PRISM_H_INCLUDED

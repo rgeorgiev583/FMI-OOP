@@ -1,0 +1,15 @@
+#pragma once
+
+class WarMachine
+{
+protected:
+    char* name;
+    long damage;
+    long totalDamage;
+    Observer* obs;
+public:
+    WarMachine(char* name, long damage = 500);
+    ~WarMachine();
+    virtual void fire() = 0;
+    virtual void printStats() = 0;
+};

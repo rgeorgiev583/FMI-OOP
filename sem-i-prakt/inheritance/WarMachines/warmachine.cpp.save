@@ -1,0 +1,6 @@
+#include "warmachine.h"
+
+WarMachine::WarMachine(char* _name, double _damage = 500): damage(_damage)
+{
+    name = new char[strel]
+}

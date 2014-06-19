@@ -1,0 +1,26 @@
+#ifndef DIAMOND_H_INCLUDED
+#define DIAMOND_H_INCLUDED
+
+#include "shape.h"
+
+class Diamond: public Shape
+{
+    double side, angle;//, apothema;
+
+public:
+    Diamond(double = 0, double = 0);
+
+    double getSide() const;
+    double getAngle() const;
+    double getPerimeter() const;
+    double getArea() const;
+    double getArea(bool) const;
+
+    void setSide(double);
+    void setAngle(double) const;
+
+    friend ostream& operator<<(ostream&, const Diamond&);
+    friend istream& operator>>(istream&, Diamond&);
+};
+
+#endif // DIAMOND_H_INCLUDED

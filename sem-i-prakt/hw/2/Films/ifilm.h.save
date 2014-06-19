@@ -1,0 +1,14 @@
+#ifndef IFILM_H_INCLUDED
+#define IFILM_H_INCLUDED
+
+class IFilm
+{
+public:
+    virtual char* getName() const = 0;
+    virtual int getShootingYear() const = 0;
+    
+    virtual void setShootingYear();
+    virtual ~IFilm();
+};
+
+#endif // IFILM_H_INCLUDED

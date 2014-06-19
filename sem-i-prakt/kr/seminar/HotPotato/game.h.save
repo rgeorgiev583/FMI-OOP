@@ -1,0 +1,22 @@
+#ifndef GAME_H_INCLUDED
+#define GAME_H_INCLUDED
+
+#include <iostream>
+
+class Game
+{
+    Player players[20];
+    size_t playerCount, maxTurns, currentPlayer, numberOfTurns, numberOfLosers;
+
+public:
+    Game(size_t);
+    
+    bool hasFinished
+    
+    void addPlayer(const char*);
+    void play(ostream&);
+    
+    friend ostream& operator<<(ostream&, const Game&);
+};
+
+#endif // GAME_H_INCLUDED

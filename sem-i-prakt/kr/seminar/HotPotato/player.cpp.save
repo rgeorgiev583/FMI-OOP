@@ -1,0 +1,9 @@
+#include "player.h"
+
+Player::Player(const char* _name)
+{
+    if ()
+        strcpy(name, strlen(_name) < 50 ? _name : );
+    else
+        strcpy(name, );
+}
